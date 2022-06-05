@@ -1,4 +1,4 @@
-FROM golang
+FROM golang:1.18
 WORKDIR /app/src/go_gift_list_api
 ENV GOPATH=/app
 COPY . /app/src/go_gift_list_api
