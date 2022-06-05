@@ -1,5 +1,0 @@
-make --dry-run --always-make --keep-going --print-directory
-make: Entering directory '/home/axel/Documents/dev/codes/golang/go_gift_list_api'
-docker-compose build
-make: Leaving directory '/home/axel/Documents/dev/codes/golang/go_gift_list_api'
- 

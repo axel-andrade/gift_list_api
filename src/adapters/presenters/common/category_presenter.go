@@ -14,11 +14,11 @@ type CategoryFormatted struct {
 
 type CategoryPresenter struct{}
 
-func (ptr *CategoryPresenter) Format(user entities.Category) CategoryFormatted {
+func (ptr *CategoryPresenter) Format(category entities.Category) CategoryFormatted {
 	return CategoryFormatted{
-		ID:        user.ID,
-		Name:      user.Name,
-		CreatedAt: user.CreatedAt,
-		UpdatedAt: user.UpdatedAt,
+		ID:        category.ID,
+		Name:      category.Name,
+		CreatedAt: category.CreatedAt,
+		UpdatedAt: category.UpdatedAt,
 	}
 }

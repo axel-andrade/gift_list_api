@@ -18,9 +18,9 @@ func ConfigRoutes(router *gin.Engine) *gin.Engine {
 	v1 := router.Group("api/v1")
 	{
 
-		users := v1.Group("users")
+		categories := v1.Group("categories")
 		{
-			users.GET("/", composes.FindUsersCompose)
+			categories.GET("/", composes.FindUsersCompose)
 		}
 	}
 
