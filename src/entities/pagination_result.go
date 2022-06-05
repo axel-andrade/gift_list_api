@@ -3,18 +3,18 @@ package entities
 import "math"
 
 type PaginateResult struct {
-	Docs        any   `json:"docs"`
-	TotalDocs   int64 `json:"total_docs,omitempty"`
-	Limit       int64 `json:"limit,omitempty"`
-	Page        int64 `json:"page,omitempty"`
-	TotalPages  int   `json:"total_pages,omitempty"`
-	HasPrevPage bool  `json:"has_prev_page"`
-	HasNextPage bool  `json:"has_next_page"`
-	PrevPage    int64 `json:"prev_page,omitempty"`
-	NextPage    int64 `json:"next_page,omitempty"`
+	Docs        interface{} `json:"docs"`
+	TotalDocs   int64       `json:"total_docs,omitempty"`
+	Limit       int64       `json:"limit,omitempty"`
+	Page        int64       `json:"page,omitempty"`
+	TotalPages  int         `json:"total_pages,omitempty"`
+	HasPrevPage bool        `json:"has_prev_page"`
+	HasNextPage bool        `json:"has_next_page"`
+	PrevPage    int64       `json:"prev_page,omitempty"`
+	NextPage    int64       `json:"next_page,omitempty"`
 }
 
-func BuildPaginateResult(docs any, pagination PaginationOptions, totalDocs int64) PaginateResult {
+func BuildPaginateResult(docs interface{}, pagination PaginationOptions, totalDocs int64) PaginateResult {
 	var result PaginateResult
 
 	totalPages := int(math.Ceil(float64(totalDocs) / float64(pagination.Limit)))
