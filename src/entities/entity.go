@@ -1,3 +1,3 @@
 package entities
 
-type UniqueEntityID = string
+type UniqueEntityID = int64

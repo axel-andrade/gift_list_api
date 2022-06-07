@@ -39,7 +39,7 @@ func (r *CategoryRepositoryImpl) FindCategoryByID(id entities.UniqueEntityID) (*
 	var category entities.Category
 	err := r.Db.First(&category, "id = ?", id).Error
 
-	if err != nil || category.ID == "" {
+	if err != nil || category.ID > 0 {
 		return nil, err
 	}
 

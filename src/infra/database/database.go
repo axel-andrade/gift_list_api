@@ -28,11 +28,11 @@ func ConnectDB() {
 	config.SetConnMaxLifetime(time.Hour)
 
 	if os.Getenv("DB_AUTO_MIGRATE") == "true" {
-		migrations.RunMigrations(db)
+		migrations.Run(db)
 	}
 
 	// Com o defer o go vai conseguir identificar quando executar uma determinada ação
-	// defer config.Close()
+	defer config.Close()
 }
 
 func CloseDB() error {

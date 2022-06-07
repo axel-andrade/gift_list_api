@@ -1,10 +1,8 @@
 package repositories_impl
 
 import (
-	"go_gift_list_api/src/entities"
 	database "go_gift_list_api/src/infra/database"
 
-	uuid "github.com/satori/go.uuid"
 	"gorm.io/gorm"
 )
 
@@ -60,8 +58,4 @@ func (r *BaseRepositoryImpl) CancelTransaction() error {
 		return err
 	}
 	return nil
-}
-
-func (r *BaseRepositoryImpl) NextEntityID() entities.UniqueEntityID {
-	return uuid.NewV4().String()
 }
