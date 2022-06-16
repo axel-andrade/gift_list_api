@@ -1,0 +1,259 @@
+package gifts_seeder
+
+import (
+	"go_gift_list_api/src/infra/database/models"
+	"log"
+
+	"gorm.io/gorm"
+)
+
+func (g *GiftSeeder) createKitchenGifts(db *gorm.DB) {
+	var kitchenCategoryID int64 = 2
+	var kitchenGifts = []models.Gift{
+		{
+			Name:          "Panela de pressão",
+			CategoryID:    kitchenCategoryID,
+			Available:     1,
+			ImageFilename: "panela_pressao",
+			Quantity:      1,
+		},
+		{
+			Name:          "Panela de arroz",
+			CategoryID:    kitchenCategoryID,
+			Available:     1,
+			ImageFilename: "panela_arroz",
+			Quantity:      1,
+		},
+		{
+			Name:          "Grill",
+			CategoryID:    kitchenCategoryID,
+			Available:     1,
+			ImageFilename: "grill",
+			Quantity:      1,
+		},
+		{
+			Name:          "Jogo de copos",
+			CategoryID:    kitchenCategoryID,
+			Available:     1,
+			ImageFilename: "jogo_copos",
+			Quantity:      1,
+		},
+		{
+			Name:          "Jogo de pratos",
+			CategoryID:    kitchenCategoryID,
+			Available:     1,
+			ImageFilename: "jogo_pratos",
+			Quantity:      1,
+		},
+		{
+			Name:          "Depurador",
+			CategoryID:    kitchenCategoryID,
+			Available:     1,
+			ImageFilename: "depurador",
+			Quantity:      1,
+		},
+		{
+			Name:          "Cafeteira",
+			CategoryID:    kitchenCategoryID,
+			Available:     1,
+			ImageFilename: "cafeteira",
+			Quantity:      1,
+		},
+		{
+			Name:          "Mixer",
+			CategoryID:    kitchenCategoryID,
+			Available:     1,
+			ImageFilename: "mixer",
+			Quantity:      1,
+		},
+		{
+			Name:          "Espremedor de frutas",
+			CategoryID:    kitchenCategoryID,
+			Available:     1,
+			ImageFilename: "espremedor_frutas",
+			Quantity:      1,
+		},
+		{
+			Name:          "Misteira",
+			CategoryID:    kitchenCategoryID,
+			Available:     1,
+			ImageFilename: "misteira",
+			Quantity:      1,
+		},
+		{
+			Name:          "Conjunto de panelas",
+			CategoryID:    kitchenCategoryID,
+			Available:     1,
+			ImageFilename: "conjunto_panelas",
+			Quantity:      1,
+		},
+		{
+			Name:          "Conjunto de formas",
+			CategoryID:    kitchenCategoryID,
+			Available:     1,
+			ImageFilename: "conjunto_formas",
+			Quantity:      1,
+		},
+		{
+			Name:          "Conjunto de vasilhas",
+			CategoryID:    kitchenCategoryID,
+			Available:     1,
+			ImageFilename: "conjunto_vasilhas",
+			Quantity:      1,
+		},
+		{
+			Name:          "Conjunto de talheres e faqueiro",
+			CategoryID:    kitchenCategoryID,
+			Available:     1,
+			ImageFilename: "conjunto_talheres_faqueiro",
+			Quantity:      1,
+		},
+		{
+			Name:          "Conjunto para cozinhar",
+			CategoryID:    kitchenCategoryID,
+			Available:     1,
+			ImageFilename: "conjunto_cozinhar",
+			Quantity:      1,
+		},
+		{
+			Name:          "Potes e organizadores de cozinha",
+			CategoryID:    kitchenCategoryID,
+			Available:     1,
+			ImageFilename: "potes_organizadores_cozinha",
+			Quantity:      1,
+		},
+		{
+			Name:          "Panos de prato",
+			CategoryID:    kitchenCategoryID,
+			Available:     1,
+			ImageFilename: "panos_prato",
+			Quantity:      1,
+		},
+		{
+			Name:          "Jarras",
+			CategoryID:    kitchenCategoryID,
+			Available:     1,
+			ImageFilename: "jarras",
+			Quantity:      1,
+		},
+		{
+			Name:          "Bandejas",
+			CategoryID:    kitchenCategoryID,
+			Available:     1,
+			ImageFilename: "bandejas",
+			Quantity:      1,
+		},
+		{
+			Name:          "Copo medidor",
+			CategoryID:    kitchenCategoryID,
+			Available:     1,
+			ImageFilename: "copo_medidor",
+			Quantity:      1,
+		},
+		{
+			Name:          "Fruteira",
+			CategoryID:    kitchenCategoryID,
+			Available:     1,
+			ImageFilename: "fruteira",
+			Quantity:      1,
+		},
+		{
+			Name:          "Tábua de corte",
+			CategoryID:    kitchenCategoryID,
+			Available:     1,
+			ImageFilename: "tabua_corte",
+			Quantity:      1,
+		},
+		{
+			Name:          "Portal papel toalha",
+			CategoryID:    kitchenCategoryID,
+			Available:     1,
+			ImageFilename: "porta_papel_toalha",
+			Quantity:      1,
+		},
+		{
+			Name:          "Abridor de latas",
+			CategoryID:    kitchenCategoryID,
+			Available:     1,
+			ImageFilename: "abridor_latas",
+			Quantity:      1,
+		},
+		{
+			Name:          "Rodinho de pia",
+			CategoryID:    kitchenCategoryID,
+			Available:     1,
+			ImageFilename: "rodinho_pia",
+			Quantity:      1,
+		},
+		{
+			Name:          "Kit de lixeiras",
+			CategoryID:    kitchenCategoryID,
+			Available:     1,
+			ImageFilename: "kit_lixeiras",
+			Quantity:      1,
+		},
+		{
+			Name:          "Ralador",
+			CategoryID:    kitchenCategoryID,
+			Available:     1,
+			ImageFilename: "ralador",
+			Quantity:      1,
+		},
+		{
+			Name:          "Escorredor de louças",
+			CategoryID:    kitchenCategoryID,
+			Available:     1,
+			ImageFilename: "escorredor_loucas",
+			Quantity:      1,
+		},
+		{
+			Name:          "Queijeira",
+			CategoryID:    kitchenCategoryID,
+			Available:     1,
+			ImageFilename: "queijeira",
+			Quantity:      1,
+		},
+		{
+			Name:          "Porta detergente e buchas",
+			CategoryID:    kitchenCategoryID,
+			Available:     1,
+			ImageFilename: "porta_dertegente_buchas",
+			Quantity:      1,
+		},
+		{
+			Name:          "Peneira de Arroz e Macarrão",
+			CategoryID:    kitchenCategoryID,
+			Available:     1,
+			ImageFilename: "peneira_arroz_macarrao",
+			Quantity:      1,
+		},
+		{
+			Name:          "Pipoqueira",
+			CategoryID:    kitchenCategoryID,
+			Available:     1,
+			ImageFilename: "pipoqueira",
+			Quantity:      1,
+		},
+		{
+			Name:          "Batedeira",
+			CategoryID:    kitchenCategoryID,
+			Available:     1,
+			ImageFilename: "batedeira",
+			Quantity:      1,
+		},
+		{
+			Name:          "Peneira",
+			CategoryID:    kitchenCategoryID,
+			Available:     1,
+			ImageFilename: "peneira",
+			Quantity:      1,
+		},
+	}
+
+	for i := range kitchenGifts {
+		err := db.Debug().Model(&models.Gift{}).Create(&kitchenGifts[i]).Error
+		if err != nil {
+			log.Fatalf("cannot seed kitchen gifts table: %v", err)
+		}
+	}
+}
