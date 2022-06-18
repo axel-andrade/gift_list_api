@@ -22,3 +22,13 @@ func (ptr *CategoryPresenter) Format(category entities.Category) CategoryFormatt
 		UpdatedAt: category.UpdatedAt,
 	}
 }
+
+func (ptr *CategoryPresenter) FormatList(gifts []entities.Category) []CategoryFormatted {
+	var categoriesFormatted []CategoryFormatted
+
+	for _, gift := range gifts {
+		categoriesFormatted = append(categoriesFormatted, ptr.Format(gift))
+	}
+
+	return categoriesFormatted
+}

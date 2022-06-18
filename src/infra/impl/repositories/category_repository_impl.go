@@ -46,7 +46,7 @@ func (r *CategoryRepositoryImpl) FindCategoryByID(id entities.UniqueEntityID) (*
 	return &category, nil
 }
 
-func (r *CategoryRepositoryImpl) FindCategoriesPaginate(pagination *entities.PaginationOptions) (*entities.PaginateResult, error) {
+func (r *CategoryRepositoryImpl) FindCategoriesPaginate(pagination *entities.PaginationOptions) ([]entities.Category, int64, error) {
 	var count int64
 	r.Db.Model(&models.Category{}).Count(&count)
 
@@ -54,10 +54,8 @@ func (r *CategoryRepositoryImpl) FindCategoriesPaginate(pagination *entities.Pag
 	limit := pagination.GetLimit()
 	sort := pagination.GetSort()
 
-	var categories []*entities.Category
+	var categories []entities.Category
 	r.Db.Offset(offset).Limit(limit).Order(sort).Find(&categories)
 
-	result := entities.BuildPaginateResult(*pagination, count)
-
-	return &result, nil
+	return categories, count, nil
 }

@@ -9,5 +9,5 @@ type CategoryRepository interface {
 	CreateCategory(category *entities.Category) (*entities.Category, error)
 	UpdateCategory(category *entities.Category) error
 	FindCategoryByID(id entities.UniqueEntityID) (*entities.Category, error)
-	FindCategorysPaginate(pagination *entities.PaginationOptions) (*entities.PaginateResult, error)
+	FindCategoriesPaginate(pagination *entities.PaginationOptions) ([]entities.Category, int64, error)
 }

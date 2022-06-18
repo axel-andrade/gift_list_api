@@ -11,8 +11,8 @@ type FindCategoriesController struct {
 	Presenter  presenters.FindCategoriesPresenter
 }
 
-func (ctrl *FindCategoriesController) Run(input interactor.FindUserInputDTO) common_adapters.OutputPort {
+func (ctrl *FindCategoriesController) Run(input interactor.FindCategoriesInputDTO) common_adapters.OutputPort {
 	result, err := ctrl.Interactor.Execute(input)
-	out := ctrl.Presenter.Show(result, err)
+	out := ctrl.Presenter.Show(result, input.PaginationOptions, err)
 	return out
 }

@@ -1,4 +1,4 @@
-package find_categories
+package find_categories_interactor
 
 type FindCategoriesInteractor struct {
 	Gateway FindCategoriesGateway
@@ -8,11 +8,11 @@ func BuildFindCategoriesInteractor(g FindCategoriesGateway) *FindCategoriesInter
 	return &FindCategoriesInteractor{Gateway: g}
 }
 
-func (bs *FindCategoriesInteractor) Execute(input FindUserInputDTO) (*FindCategoriesOutputDTO, error) {
-	data, err := bs.Gateway.FindCategoriesPaginate(&input)
+func (bs *FindCategoriesInteractor) Execute(input FindCategoriesInputDTO) (*FindCategoriesOutputDTO, error) {
+	categories, totalCategories, err := bs.Gateway.FindCategoriesPaginate(&input.PaginationOptions)
 	if err != nil {
 		return nil, err
 	}
 
-	return data, nil
+	return &FindCategoriesOutputDTO{categories, totalCategories}, nil
 }
