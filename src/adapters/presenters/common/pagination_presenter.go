@@ -19,7 +19,7 @@ type PaginateResult struct {
 
 type PaginationPresenter struct{}
 
-func (p *PaginationPresenter) Format(docs interface{}, pagination entities.PaginationOptions, totalDocs int64) PaginateResult {
+func (p *PaginationPresenter) Format(docs interface{}, pagination *entities.PaginationOptions, totalDocs int64) PaginateResult {
 	var result PaginateResult
 
 	totalPages := int(math.Ceil(float64(totalDocs) / float64(pagination.Limit)))

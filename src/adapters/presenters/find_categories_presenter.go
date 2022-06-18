@@ -13,7 +13,7 @@ type FindCategoriesPresenter struct {
 	paginationPtr common_ptr.PaginationPresenter
 }
 
-func (p *FindCategoriesPresenter) Show(result *interactor.FindCategoriesOutputDTO, paginationOptions entities.PaginationOptions, err error) common_adapters.OutputPort {
+func (p *FindCategoriesPresenter) Show(result *interactor.FindCategoriesOutputDTO, paginationOptions *entities.PaginationOptions, err error) common_adapters.OutputPort {
 	if err != nil {
 		return p.formatErrOutput(err)
 	}
@@ -21,7 +21,7 @@ func (p *FindCategoriesPresenter) Show(result *interactor.FindCategoriesOutputDT
 	return p.formatSuccessOutput(result, paginationOptions)
 }
 
-func (p *FindCategoriesPresenter) formatSuccessOutput(result *interactor.FindCategoriesOutputDTO, paginationOptions entities.PaginationOptions) common_adapters.OutputPort {
+func (p *FindCategoriesPresenter) formatSuccessOutput(result *interactor.FindCategoriesOutputDTO, paginationOptions *entities.PaginationOptions) common_adapters.OutputPort {
 	docs := p.categoryPtr.FormatList(result.Categories)
 	data := p.paginationPtr.Format(docs, paginationOptions, result.TotalCategories)
 

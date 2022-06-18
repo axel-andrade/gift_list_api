@@ -9,7 +9,7 @@ func BuildFindGiftsInteractor(g FindGiftsGateway) *FindGiftsInteractor {
 }
 
 func (bs *FindGiftsInteractor) Execute(input FindsGiftsInputDTO) (*FindsGiftsOutputDTO, error) {
-	gifts, totalGifts, err := bs.Gateway.FindGiftsPaginate(&input.PaginationOptions)
+	gifts, totalGifts, err := bs.Gateway.FindGiftsPaginate(input.PaginationOptions)
 	if err != nil {
 		return nil, err
 	}

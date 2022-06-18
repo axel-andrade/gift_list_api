@@ -9,7 +9,7 @@ type FindGiftsGateway interface {
 }
 
 type FindsGiftsInputDTO struct {
-	PaginationOptions entities.PaginationOptions
+	PaginationOptions *entities.PaginationOptions
 }
 
 type FindsGiftsOutputDTO struct {

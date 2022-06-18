@@ -18,10 +18,11 @@ func FindGiftsCompose(c *gin.Context) {
 	interactor := find_gifts_interactor.BuildFindGiftsInteractor(gateway)
 	ctrl := controllers.FindGiftsController{Interactor: *interactor, Presenter: ptr}
 
-	var paginationOptions entities.PaginationOptions
-	paginationOptions.Limit, _ = strconv.Atoi(c.Query("limit"))
-	paginationOptions.Page, _ = strconv.Atoi(c.Query("page"))
-	paginationOptions.Sort = c.Query("order")
+	limit, _ := strconv.Atoi(c.Query("limit"))
+	page, _ := strconv.Atoi(c.Query("page"))
+	sort := c.Query("sort")
+
+	paginationOptions, _ := entities.BuildPaginationOptions(limit, page, sort)
 
 	input := find_gifts_interactor.FindsGiftsInputDTO{PaginationOptions: paginationOptions}
 

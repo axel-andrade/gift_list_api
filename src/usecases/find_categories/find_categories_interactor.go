@@ -9,7 +9,7 @@ func BuildFindCategoriesInteractor(g FindCategoriesGateway) *FindCategoriesInter
 }
 
 func (bs *FindCategoriesInteractor) Execute(input FindCategoriesInputDTO) (*FindCategoriesOutputDTO, error) {
-	categories, totalCategories, err := bs.Gateway.FindCategoriesPaginate(&input.PaginationOptions)
+	categories, totalCategories, err := bs.Gateway.FindCategoriesPaginate(input.PaginationOptions)
 	if err != nil {
 		return nil, err
 	}

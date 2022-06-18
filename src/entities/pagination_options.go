@@ -7,26 +7,39 @@ type PaginationOptions struct {
 }
 
 func (p *PaginationOptions) GetOffset() int {
-	return (p.GetPage() - 1) * p.GetLimit()
+	return (p.Page - 1) * p.Limit
 }
 
-func (p *PaginationOptions) GetLimit() int {
-	if p.Limit == 0 {
+func (p *PaginationOptions) SetLimit(limit int) {
+	if limit <= 0 {
 		p.Limit = 10
+	} else {
+		p.Limit = limit
 	}
-	return p.Limit
 }
 
-func (p *PaginationOptions) GetPage() int {
-	if p.Page == 0 {
+func (p *PaginationOptions) SetPage(page int) {
+	if page <= 0 {
 		p.Page = 1
+	} else {
+		p.Page = page
 	}
-	return p.Page
 }
 
-func (p *PaginationOptions) GetSort() string {
-	if p.Sort == "" {
+func (p *PaginationOptions) SetSort(sort string) {
+	if sort == "" {
 		p.Sort = "id asc"
+	} else {
+		p.Sort = sort
 	}
-	return p.Sort
+}
+
+func BuildPaginationOptions(limit int, page int, sort string) (*PaginationOptions, error) {
+	var paginationOptions PaginationOptions
+
+	paginationOptions.SetLimit(limit)
+	paginationOptions.SetPage(page)
+	paginationOptions.SetSort(sort)
+
+	return &paginationOptions, nil
 }

@@ -13,6 +13,5 @@ type FindCategoriesController struct {
 
 func (ctrl *FindCategoriesController) Run(input interactor.FindCategoriesInputDTO) common_adapters.OutputPort {
 	result, err := ctrl.Interactor.Execute(input)
-	out := ctrl.Presenter.Show(result, input.PaginationOptions, err)
-	return out
+	return ctrl.Presenter.Show(result, input.PaginationOptions, err)
 }

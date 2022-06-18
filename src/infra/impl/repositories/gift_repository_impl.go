@@ -31,8 +31,8 @@ func (r *GiftRepositoryImpl) FindGiftsPaginate(pagination *entities.PaginationOp
 	r.Db.Model(&models.Gift{}).Count(&count)
 
 	offset := pagination.GetOffset()
-	limit := pagination.GetLimit()
-	sort := pagination.GetSort()
+	limit := pagination.Limit
+	sort := pagination.Sort
 
 	var gifts []entities.Gift
 	r.Db.Preload("Category").Offset(offset).Limit(limit).Order(sort).Find(&gifts)

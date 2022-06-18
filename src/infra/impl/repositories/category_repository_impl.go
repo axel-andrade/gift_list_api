@@ -51,8 +51,8 @@ func (r *CategoryRepositoryImpl) FindCategoriesPaginate(pagination *entities.Pag
 	r.Db.Model(&models.Category{}).Count(&count)
 
 	offset := pagination.GetOffset()
-	limit := pagination.GetLimit()
-	sort := pagination.GetSort()
+	limit := pagination.Limit
+	sort := pagination.Sort
 
 	var categories []entities.Category
 	r.Db.Offset(offset).Limit(limit).Order(sort).Find(&categories)

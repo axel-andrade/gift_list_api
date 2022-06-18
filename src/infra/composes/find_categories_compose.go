@@ -18,10 +18,11 @@ func FindCategoriesCompose(c *gin.Context) {
 	interactor := find_categories_interactor.BuildFindCategoriesInteractor(gateway)
 	ctrl := controllers.FindCategoriesController{Interactor: *interactor, Presenter: ptr}
 
-	var paginationOptions entities.PaginationOptions
-	paginationOptions.Limit, _ = strconv.Atoi(c.Query("limit"))
-	paginationOptions.Page, _ = strconv.Atoi(c.Query("page"))
-	paginationOptions.Sort = c.Query("order")
+	limit, _ := strconv.Atoi(c.Query("limit"))
+	page, _ := strconv.Atoi(c.Query("page"))
+	sort := c.Query("sort")
+
+	paginationOptions, _ := entities.BuildPaginationOptions(limit, page, sort)
 
 	input := find_categories_interactor.FindCategoriesInputDTO{PaginationOptions: paginationOptions}
 

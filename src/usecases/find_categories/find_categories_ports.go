@@ -9,7 +9,7 @@ type FindCategoriesGateway interface {
 }
 
 type FindCategoriesInputDTO struct {
-	PaginationOptions entities.PaginationOptions
+	PaginationOptions *entities.PaginationOptions
 }
 
 type FindCategoriesOutputDTO struct {
