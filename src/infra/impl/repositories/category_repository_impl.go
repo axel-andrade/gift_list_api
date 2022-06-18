@@ -57,7 +57,7 @@ func (r *CategoryRepositoryImpl) FindCategoriesPaginate(pagination *entities.Pag
 	var categories []*entities.Category
 	r.Db.Offset(offset).Limit(limit).Order(sort).Find(&categories)
 
-	result := entities.BuildPaginateResult(categories, *pagination, count)
+	result := entities.BuildPaginateResult(*pagination, count)
 
 	return &result, nil
 }

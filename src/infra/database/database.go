@@ -32,7 +32,7 @@ func ConnectDB() {
 	}
 
 	// Com o defer o go vai conseguir identificar quando executar uma determinada ação
-	defer config.Close()
+	// defer config.Close()
 }
 
 func CloseDB() error {

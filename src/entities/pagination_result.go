@@ -14,12 +14,11 @@ type PaginateResult struct {
 	NextPage    int64       `json:"next_page,omitempty"`
 }
 
-func BuildPaginateResult(docs interface{}, pagination PaginationOptions, totalDocs int64) PaginateResult {
+func BuildPaginateResult(pagination PaginationOptions, totalDocs int64) PaginateResult {
 	var result PaginateResult
 
 	totalPages := int(math.Ceil(float64(totalDocs) / float64(pagination.Limit)))
 
-	result.Docs = docs
 	result.TotalPages = totalPages
 	result.Limit = int64(pagination.Limit)
 	result.Page = int64(pagination.Page)

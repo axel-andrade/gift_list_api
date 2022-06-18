@@ -20,7 +20,12 @@ func ConfigRoutes(router *gin.Engine) *gin.Engine {
 
 		categories := v1.Group("categories")
 		{
-			categories.GET("/", composes.FindUsersCompose)
+			categories.GET("/", composes.FindCategoriesCompose)
+		}
+
+		gifts := v1.Group("gifts")
+		{
+			gifts.GET("/", composes.FindGiftsCompose)
 		}
 	}
 

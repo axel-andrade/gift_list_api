@@ -26,7 +26,7 @@ func (p *PaginationOptions) GetPage() int {
 
 func (p *PaginationOptions) GetSort() string {
 	if p.Sort == "" {
-		p.Sort = "Id desc"
+		p.Sort = "id asc"
 	}
 	return p.Sort
 }
