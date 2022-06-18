@@ -5,10 +5,11 @@ import (
 )
 
 type FindGiftsGateway interface {
-	FindGiftsPaginate(pagination *entities.PaginationOptions) ([]entities.Gift, int64, error)
+	FindGiftsPaginate(categoryID entities.UniqueEntityID, pagination *entities.PaginationOptions) ([]entities.Gift, int64, error)
 }
 
 type FindsGiftsInputDTO struct {
+	CategoryID        entities.UniqueEntityID
 	PaginationOptions *entities.PaginationOptions
 }
 

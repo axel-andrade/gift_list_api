@@ -2,6 +2,8 @@ package routes
 
 import (
 	composes "go_gift_list_api/src/infra/composes"
+	common_validators "go_gift_list_api/src/infra/http/middlewares/validators/common"
+	gifts_validators "go_gift_list_api/src/infra/http/middlewares/validators/gifts"
 
 	"github.com/gin-gonic/gin"
 )
@@ -25,7 +27,7 @@ func ConfigRoutes(router *gin.Engine) *gin.Engine {
 
 		gifts := v1.Group("gifts")
 		{
-			gifts.GET("/", composes.FindGiftsCompose)
+			gifts.GET("/", common_validators.PaginationValidator(), gifts_validators.FindGiftsValidator(), composes.FindGiftsCompose)
 		}
 	}
 

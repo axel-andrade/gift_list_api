@@ -6,8 +6,6 @@ import (
 	"go_gift_list_api/src/entities"
 	"go_gift_list_api/src/infra/factories"
 	find_gifts_interactor "go_gift_list_api/src/usecases/find_gifts"
-	"net/http"
-	"strconv"
 
 	"github.com/gin-gonic/gin"
 )
@@ -18,14 +16,12 @@ func FindGiftsCompose(c *gin.Context) {
 	interactor := find_gifts_interactor.BuildFindGiftsInteractor(gateway)
 	ctrl := controllers.FindGiftsController{Interactor: *interactor, Presenter: ptr}
 
-	limit, _ := strconv.Atoi(c.Query("limit"))
-	page, _ := strconv.Atoi(c.Query("page"))
-	sort := c.Query("sort")
+	categoryID := c.MustGet("categoryID").(int)
+	paginationOptions := c.MustGet("paginationOptions").(*entities.PaginationOptions)
 
-	paginationOptions, _ := entities.BuildPaginationOptions(limit, page, sort)
+	input := find_gifts_interactor.FindsGiftsInputDTO{CategoryID: int64(categoryID), PaginationOptions: paginationOptions}
 
-	input := find_gifts_interactor.FindsGiftsInputDTO{PaginationOptions: paginationOptions}
+	output := ctrl.Run(&input)
 
-	output := ctrl.Run(input)
-	c.JSON(http.StatusOK, output)
+	c.JSON(output.StatusCode, output.Data)
 }

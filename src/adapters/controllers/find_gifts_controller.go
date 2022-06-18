@@ -11,7 +11,7 @@ type FindGiftsController struct {
 	Presenter  presenters.FindGiftsPresenter
 }
 
-func (ctrl *FindGiftsController) Run(input interactor.FindsGiftsInputDTO) common_adapters.OutputPort {
+func (ctrl *FindGiftsController) Run(input *interactor.FindsGiftsInputDTO) common_adapters.OutputPort {
 	result, err := ctrl.Interactor.Execute(input)
 	return ctrl.Presenter.Show(result, input.PaginationOptions, err)
 }
