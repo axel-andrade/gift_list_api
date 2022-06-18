@@ -8,11 +8,12 @@ import (
 
 type GiftRepositoryImpl struct {
 	BaseRepositoryImpl
+	CategoryRepositoryImpl
 	GiftMapper mappers.GiftMapper
 }
 
 func BuildGiftRepositoryImpl() *GiftRepositoryImpl {
-	return &GiftRepositoryImpl{BaseRepositoryImpl: *BuildBaseRepoImpl()}
+	return &GiftRepositoryImpl{BaseRepositoryImpl: *BuildBaseRepoImpl(), CategoryRepositoryImpl: *BuildCategoryRepositoryImpl()}
 }
 
 func (r *GiftRepositoryImpl) FindGiftByID(id entities.UniqueEntityID) (*entities.Gift, error) {
@@ -27,13 +28,11 @@ func (r *GiftRepositoryImpl) FindGiftByID(id entities.UniqueEntityID) (*entities
 }
 
 func (r *GiftRepositoryImpl) FindGiftsPaginate(categoryID entities.UniqueEntityID, pagination *entities.PaginationOptions) ([]entities.Gift, int64, error) {
-	checkCategory := categoryID != 0
-
 	var count int64
 	q := r.Db.Model(&models.Gift{})
 
-	if checkCategory {
-		q.Where("category_id = ?", categoryID)
+	if categoryID > 0 {
+		q.Where("category_id = ?", &categoryID)
 	}
 
 	q.Count(&count)
@@ -46,8 +45,8 @@ func (r *GiftRepositoryImpl) FindGiftsPaginate(categoryID entities.UniqueEntityI
 
 	q = r.Db.Preload("Category").Offset(offset).Limit(limit).Order(sort)
 
-	if checkCategory {
-		q.Where("category_id = ?", categoryID)
+	if categoryID > 0 {
+		q.Where("category_id = ?", &categoryID)
 	}
 
 	q.Find(&gifts)

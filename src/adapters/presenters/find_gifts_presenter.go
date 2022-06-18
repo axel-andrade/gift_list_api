@@ -4,7 +4,9 @@ import (
 	common_adapters "go_gift_list_api/src/adapters/common"
 	common_ptr "go_gift_list_api/src/adapters/presenters/common"
 	"go_gift_list_api/src/entities"
+	ERROR "go_gift_list_api/src/shared/errors"
 	find_gifts_interactor "go_gift_list_api/src/usecases/find_gifts"
+
 	"net/http"
 )
 
@@ -32,8 +34,18 @@ func (p *FindGiftsPresenter) formatSuccessOutput(result *find_gifts_interactor.F
 }
 
 func (p *FindGiftsPresenter) formatErrOutput(err error) common_adapters.OutputPort {
-	return common_adapters.OutputPort{
-		StatusCode: http.StatusBadRequest,
-		Error:      err.Error(),
+	errorMsg := err.Error()
+
+	switch errorMsg {
+	case ERROR.CATEGORY_NOT_FOUND:
+		return common_adapters.OutputPort{
+			StatusCode: http.StatusNotFound,
+			Error:      errorMsg,
+		}
+	default:
+		return common_adapters.OutputPort{
+			StatusCode: http.StatusInternalServerError,
+			Error:      err.Error(),
+		}
 	}
 }

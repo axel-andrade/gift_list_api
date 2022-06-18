@@ -1,6 +1,7 @@
 package errors
 
 const (
+	CATEGORY_NOT_FOUND              = "category not found"
 	EMAIL_ALREADY_EXISTS            = "email already registered"
 	FIELD_MUST_BE_INTEGER           = "the [field] field must be integer"
 	FIELD_MUST_BE_GREATER_THAN_ZERO = "the [field] field must be greater than zero"

@@ -1,5 +1,10 @@
 package find_gifts_interactor
 
+import (
+	"errors"
+	ERROR "go_gift_list_api/src/shared/errors"
+)
+
 type FindGiftsInteractor struct {
 	Gateway FindGiftsGateway
 }
@@ -11,7 +16,15 @@ func BuildFindGiftsInteractor(g FindGiftsGateway) *FindGiftsInteractor {
 func (bs *FindGiftsInteractor) Execute(input *FindsGiftsInputDTO) (*FindsGiftsOutputDTO, error) {
 	categoryID, paginationOptions := input.CategoryID, input.PaginationOptions
 
-	gifts, totalGifts, err := bs.Gateway.FindGiftsPaginate(categoryID, paginationOptions)
+	if categoryID != nil {
+		categoryExists := bs.Gateway.CheckExistsCategory(*(categoryID))
+
+		if !categoryExists {
+			return nil, errors.New(ERROR.CATEGORY_NOT_FOUND)
+		}
+	}
+
+	gifts, totalGifts, err := bs.Gateway.FindGiftsPaginate(*(categoryID), paginationOptions)
 	if err != nil {
 		return nil, err
 	}

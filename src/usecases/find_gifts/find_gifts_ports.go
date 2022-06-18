@@ -5,11 +5,12 @@ import (
 )
 
 type FindGiftsGateway interface {
+	CheckExistsCategory(categoryID entities.UniqueEntityID) bool
 	FindGiftsPaginate(categoryID entities.UniqueEntityID, pagination *entities.PaginationOptions) ([]entities.Gift, int64, error)
 }
 
 type FindsGiftsInputDTO struct {
-	CategoryID        entities.UniqueEntityID
+	CategoryID        *entities.UniqueEntityID
 	PaginationOptions *entities.PaginationOptions
 }
 

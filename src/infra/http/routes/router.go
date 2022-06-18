@@ -22,7 +22,7 @@ func ConfigRoutes(router *gin.Engine) *gin.Engine {
 
 		categories := v1.Group("categories")
 		{
-			categories.GET("/", composes.FindCategoriesCompose)
+			categories.GET("/", common_validators.PaginationValidator(), composes.FindCategoriesCompose)
 		}
 
 		gifts := v1.Group("gifts")
