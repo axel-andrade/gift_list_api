@@ -24,7 +24,7 @@ func (ptr *CategoryPresenter) Format(category entities.Category) CategoryFormatt
 }
 
 func (ptr *CategoryPresenter) FormatList(gifts []entities.Category) []CategoryFormatted {
-	var categoriesFormatted []CategoryFormatted
+	var categoriesFormatted []CategoryFormatted = make([]CategoryFormatted, 0)
 
 	for _, gift := range gifts {
 		categoriesFormatted = append(categoriesFormatted, ptr.Format(gift))

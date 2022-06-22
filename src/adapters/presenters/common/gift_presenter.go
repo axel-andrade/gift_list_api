@@ -34,7 +34,7 @@ func (ptr *GiftPresenter) Format(gift entities.Gift) GiftFormatted {
 }
 
 func (ptr *GiftPresenter) FormatList(gifts []entities.Gift) []GiftFormatted {
-	var giftsFormatted []GiftFormatted
+	var giftsFormatted []GiftFormatted = make([]GiftFormatted, 0)
 
 	for _, gift := range gifts {
 		giftsFormatted = append(giftsFormatted, ptr.Format(gift))

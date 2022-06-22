@@ -1,9 +1,10 @@
 package entities
 
 type PaginationOptions struct {
-	Limit int    `json:"limit"`
-	Page  int    `json:"page"`
-	Sort  string `json:"order"`
+	Limit  int    `json:"limit"`
+	Page   int    `json:"page"`
+	Search string `json:"search"`
+	Sort   string `json:"order"`
 }
 
 func (p *PaginationOptions) GetOffset() int {
@@ -26,6 +27,10 @@ func (p *PaginationOptions) SetPage(page int) {
 	}
 }
 
+func (p *PaginationOptions) SetSearch(search string) {
+	p.Search = search
+}
+
 func (p *PaginationOptions) SetSort(sort string) {
 	if sort == "" {
 		p.Sort = "id desc"
@@ -34,11 +39,12 @@ func (p *PaginationOptions) SetSort(sort string) {
 	}
 }
 
-func BuildPaginationOptions(limit int, page int, sort string) (*PaginationOptions, error) {
+func BuildPaginationOptions(limit int, page int, sort string, search string) (*PaginationOptions, error) {
 	var paginationOptions PaginationOptions
 
 	paginationOptions.SetLimit(limit)
 	paginationOptions.SetPage(page)
+	paginationOptions.SetSearch(search)
 	paginationOptions.SetSort(sort)
 
 	return &paginationOptions, nil

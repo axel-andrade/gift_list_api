@@ -32,7 +32,11 @@ func (r *GiftRepositoryImpl) FindGiftsPaginate(categoryID entities.UniqueEntityI
 	var q string = "available = 1"
 
 	if categoryID > 0 {
-		q += " category_id = " + string(rune(categoryID))
+		q += " AND category_id = " + string(rune(categoryID))
+	}
+
+	if pagination.Search != "" {
+		q += " AND name LIKE '%" + pagination.Search + "%'"
 	}
 
 	r.Db.Model(&models.Gift{}).Where(q).Count(&count)

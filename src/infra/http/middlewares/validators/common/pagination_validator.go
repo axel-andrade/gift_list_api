@@ -65,8 +65,9 @@ func PaginationValidator() gin.HandlerFunc {
 		}
 
 		sort := c.Query("sort")
+		search := c.Query("search")
 
-		paginationOptions, _ := entities.BuildPaginationOptions(limit, page, sort)
+		paginationOptions, _ := entities.BuildPaginationOptions(limit, page, sort, search)
 
 		c.Set("paginationOptions", paginationOptions)
 		c.Next()
