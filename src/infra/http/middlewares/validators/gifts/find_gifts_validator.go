@@ -26,20 +26,23 @@ func FindGiftsValidator() gin.HandlerFunc {
 				c.Abort()
 				return
 			}
+
+			if categoryID <= 0 {
+				msg := strings.Replace(ERROR.FIELD_MUST_BE_GREATER_THAN_ZERO, "[field]", "category_id", 1)
+
+				c.JSON(http.StatusUnprocessableEntity, gin.H{
+					"error": msg,
+				})
+
+				c.Abort()
+				return
+			}
+
+			c.Set("categoryID", categoryID)
+		} else {
+			c.Set("categoryID", 0)
 		}
 
-		if categoryID <= 0 {
-			msg := strings.Replace(ERROR.FIELD_MUST_BE_GREATER_THAN_ZERO, "[field]", "category_id", 1)
-
-			c.JSON(http.StatusUnprocessableEntity, gin.H{
-				"error": msg,
-			})
-
-			c.Abort()
-			return
-		}
-
-		c.Set("categoryID", categoryID)
 		c.Next()
 	}
 }

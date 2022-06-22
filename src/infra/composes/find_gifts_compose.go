@@ -19,7 +19,7 @@ func FindGiftsCompose(c *gin.Context) {
 	categoryID := int64(c.MustGet("categoryID").(int))
 	paginationOptions := c.MustGet("paginationOptions").(*entities.PaginationOptions)
 
-	input := find_gifts_interactor.FindsGiftsInputDTO{CategoryID: &categoryID, PaginationOptions: paginationOptions}
+	input := find_gifts_interactor.FindsGiftsInputDTO{CategoryID: categoryID, PaginationOptions: paginationOptions}
 
 	output := ctrl.Run(&input)
 

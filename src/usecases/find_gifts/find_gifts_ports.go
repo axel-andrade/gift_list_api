@@ -10,7 +10,7 @@ type FindGiftsGateway interface {
 }
 
 type FindsGiftsInputDTO struct {
-	CategoryID        *entities.UniqueEntityID
+	CategoryID        entities.UniqueEntityID
 	PaginationOptions *entities.PaginationOptions
 }
 

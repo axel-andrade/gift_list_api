@@ -16,15 +16,15 @@ func BuildFindGiftsInteractor(g FindGiftsGateway) *FindGiftsInteractor {
 func (bs *FindGiftsInteractor) Execute(input *FindsGiftsInputDTO) (*FindsGiftsOutputDTO, error) {
 	categoryID, paginationOptions := input.CategoryID, input.PaginationOptions
 
-	if categoryID != nil {
-		categoryExists := bs.Gateway.CheckExistsCategory(*(categoryID))
+	if categoryID > 0 {
+		categoryExists := bs.Gateway.CheckExistsCategory(categoryID)
 
 		if !categoryExists {
 			return nil, errors.New(ERROR.CATEGORY_NOT_FOUND)
 		}
 	}
 
-	gifts, totalGifts, err := bs.Gateway.FindGiftsPaginate(*(categoryID), paginationOptions)
+	gifts, totalGifts, err := bs.Gateway.FindGiftsPaginate(categoryID, paginationOptions)
 	if err != nil {
 		return nil, err
 	}

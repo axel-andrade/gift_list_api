@@ -29,13 +29,13 @@ func (r *GiftRepositoryImpl) FindGiftByID(id entities.UniqueEntityID) (*entities
 
 func (r *GiftRepositoryImpl) FindGiftsPaginate(categoryID entities.UniqueEntityID, pagination *entities.PaginationOptions) ([]entities.Gift, int64, error) {
 	var count int64
-	q := r.Db.Model(&models.Gift{})
+	var q string = "available = 1"
 
 	if categoryID > 0 {
-		q.Where("category_id = ?", &categoryID)
+		q += " category_id = " + string(rune(categoryID))
 	}
 
-	q.Count(&count)
+	r.Db.Model(&models.Gift{}).Where(q).Count(&count)
 
 	offset := pagination.GetOffset()
 	limit := pagination.Limit
@@ -43,13 +43,7 @@ func (r *GiftRepositoryImpl) FindGiftsPaginate(categoryID entities.UniqueEntityI
 
 	var gifts []entities.Gift
 
-	q = r.Db.Preload("Category").Offset(offset).Limit(limit).Order(sort)
-
-	if categoryID > 0 {
-		q.Where("category_id = ?", &categoryID)
-	}
-
-	q.Find(&gifts)
+	r.Db.Preload("Category").Offset(offset).Limit(limit).Order(sort).Where(q).Find(&gifts)
 
 	return gifts, count, nil
 }
