@@ -9,12 +9,12 @@ type FindGiftsGateway interface {
 	FindGiftsPaginate(categoryID entities.UniqueEntityID, pagination *entities.PaginationOptions) ([]entities.Gift, int64, error)
 }
 
-type FindsGiftsInputDTO struct {
+type FindGiftsInputDTO struct {
 	CategoryID        entities.UniqueEntityID
 	PaginationOptions *entities.PaginationOptions
 }
 
-type FindsGiftsOutputDTO struct {
+type FindGiftsOutputDTO struct {
 	Gifts      []entities.Gift
 	TotalGifts int64
 }

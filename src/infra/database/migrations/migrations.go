@@ -23,4 +23,6 @@ func Run(db *gorm.DB) {
 			giftSeeder.Run(db)
 		}
 	}
+
+	db.AutoMigrate(models.MarkedGift{})
 }

@@ -13,7 +13,7 @@ func BuildFindGiftsInteractor(g FindGiftsGateway) *FindGiftsInteractor {
 	return &FindGiftsInteractor{Gateway: g}
 }
 
-func (bs *FindGiftsInteractor) Execute(input *FindsGiftsInputDTO) (*FindsGiftsOutputDTO, error) {
+func (bs *FindGiftsInteractor) Execute(input *FindGiftsInputDTO) (*FindGiftsOutputDTO, error) {
 	categoryID, paginationOptions := input.CategoryID, input.PaginationOptions
 
 	if categoryID > 0 {
@@ -29,5 +29,5 @@ func (bs *FindGiftsInteractor) Execute(input *FindsGiftsInputDTO) (*FindsGiftsOu
 		return nil, err
 	}
 
-	return &FindsGiftsOutputDTO{gifts, totalGifts}, nil
+	return &FindGiftsOutputDTO{gifts, totalGifts}, nil
 }

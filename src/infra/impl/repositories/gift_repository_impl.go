@@ -51,3 +51,16 @@ func (r *GiftRepositoryImpl) FindGiftsPaginate(categoryID entities.UniqueEntityI
 
 	return gifts, count, nil
 }
+
+func (r *GiftRepositoryImpl) UpdateGift(gift *entities.Gift) (*entities.Gift, error) {
+
+	model := r.GiftMapper.ToPersistence(*gift)
+
+	q := r.getQueryOrTx()
+
+	if err := q.Where("id = ?", gift.ID).UpdateColumns(model).Error; err != nil {
+		return nil, err
+	}
+
+	return r.GiftMapper.ToDomain(*model), nil
+}
