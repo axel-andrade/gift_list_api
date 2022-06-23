@@ -7,20 +7,20 @@ import (
 )
 
 type GiftRepositoryImpl struct {
-	BaseRepositoryImpl
-	CategoryRepositoryImpl
+	*BaseRepositoryImpl
+	*CategoryRepositoryImpl
 	GiftMapper mappers.GiftMapper
 }
 
-func BuildGiftRepositoryImpl() *GiftRepositoryImpl {
-	return &GiftRepositoryImpl{BaseRepositoryImpl: *BuildBaseRepoImpl(), CategoryRepositoryImpl: *BuildCategoryRepositoryImpl()}
+func BuildGiftRepositoryImpl(baseRepositoryImpl *BaseRepositoryImpl, categoryRepositoryImpl *CategoryRepositoryImpl) *GiftRepositoryImpl {
+	return &GiftRepositoryImpl{BaseRepositoryImpl: baseRepositoryImpl, CategoryRepositoryImpl: categoryRepositoryImpl}
 }
 
 func (r *GiftRepositoryImpl) FindGiftByID(id entities.UniqueEntityID) (*entities.Gift, error) {
 	var gift entities.Gift
 	err := r.Db.First(&gift, "id = ?", id).Error
 
-	if err != nil || gift.ID > 0 {
+	if err != nil || gift.ID == 0 {
 		return nil, err
 	}
 
@@ -53,14 +53,13 @@ func (r *GiftRepositoryImpl) FindGiftsPaginate(categoryID entities.UniqueEntityI
 }
 
 func (r *GiftRepositoryImpl) UpdateGift(gift *entities.Gift) (*entities.Gift, error) {
-
-	model := r.GiftMapper.ToPersistence(*gift)
+	giftModel := r.GiftMapper.ToPersistence(*gift)
 
 	q := r.getQueryOrTx()
 
-	if err := q.Where("id = ?", gift.ID).UpdateColumns(model).Error; err != nil {
+	if err := q.Model(&models.Gift{}).Where("id = ?", gift.ID).Updates(&map[string]interface{}{"available": giftModel.Available, "quantity": giftModel.Quantity}).Error; err != nil {
 		return nil, err
 	}
 
-	return r.GiftMapper.ToDomain(*model), nil
+	return r.GiftMapper.ToDomain(*giftModel), nil
 }

@@ -9,5 +9,7 @@ type FindCategoriesGatewayFactory struct {
 }
 
 func BuildFindCategoriesGatewayFactory() *FindCategoriesGatewayFactory {
-	return &FindCategoriesGatewayFactory{CategoryRepositoryImpl: repositories_impl.BuildCategoryRepositoryImpl()}
+	baseRepositoryImpl := repositories_impl.BuildBaseRepoImpl()
+
+	return &FindCategoriesGatewayFactory{CategoryRepositoryImpl: repositories_impl.BuildCategoryRepositoryImpl(baseRepositoryImpl)}
 }

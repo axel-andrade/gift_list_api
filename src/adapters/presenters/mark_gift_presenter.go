@@ -16,7 +16,7 @@ func (p *MarkGiftPresenter) Show(err error) common_adapters.OutputPort {
 
 	return common_adapters.OutputPort{
 		StatusCode: http.StatusCreated,
-		Data:       struct{ msg string }{"successfully marked gift"},
+		Message:    "successfully marked gift",
 	}
 }
 
@@ -29,9 +29,6 @@ func (p *MarkGiftPresenter) formatErrOutput(err error) common_adapters.OutputPor
 	case ERROR.CATEGORY_NOT_FOUND:
 	case ERROR.GIFT_NOT_FOUND:
 		statusCode = http.StatusNotFound
-	case ERROR.GIFT_NOT_AVAILABLE:
-	case ERROR.GIFT_QUANTITY_NOT_AVAILABLE:
-		statusCode = http.StatusConflict
 	default:
 		statusCode = http.StatusInternalServerError
 	}

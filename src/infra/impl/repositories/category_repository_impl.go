@@ -7,12 +7,12 @@ import (
 )
 
 type CategoryRepositoryImpl struct {
-	BaseRepositoryImpl
+	*BaseRepositoryImpl
 	CategoryMapper mappers.CategoryMapper
 }
 
-func BuildCategoryRepositoryImpl() *CategoryRepositoryImpl {
-	return &CategoryRepositoryImpl{BaseRepositoryImpl: *BuildBaseRepoImpl()}
+func BuildCategoryRepositoryImpl(baseRepositoryImpl *BaseRepositoryImpl) *CategoryRepositoryImpl {
+	return &CategoryRepositoryImpl{BaseRepositoryImpl: baseRepositoryImpl}
 }
 
 func (r *CategoryRepositoryImpl) CheckExistsCategory(categoryID entities.UniqueEntityID) bool {

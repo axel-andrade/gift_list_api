@@ -9,5 +9,9 @@ type FindGiftsGatewayFactory struct {
 }
 
 func BuildFindGiftsGatewayFactory() *FindGiftsGatewayFactory {
-	return &FindGiftsGatewayFactory{GiftRepositoryImpl: repositories_impl.BuildGiftRepositoryImpl()}
+	baseRepositoryImpl := repositories_impl.BuildBaseRepoImpl()
+	categoryRepositoryImpl := repositories_impl.BuildCategoryRepositoryImpl(baseRepositoryImpl)
+	giftRepositoryImpl := repositories_impl.BuildGiftRepositoryImpl(baseRepositoryImpl, categoryRepositoryImpl)
+
+	return &FindGiftsGatewayFactory{GiftRepositoryImpl: giftRepositoryImpl}
 }

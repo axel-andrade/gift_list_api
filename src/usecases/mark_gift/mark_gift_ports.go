@@ -14,10 +14,10 @@ type MarkGiftGateway interface {
 }
 
 type MarkGiftInputDTO struct {
-	CategoryID entities.UniqueEntityID `json="category_id"`
-	GiftID     entities.UniqueEntityID `json="gift_id"`
-	PersonName string                  `json="person_name"`
-	Quantity   int64                   `json="quantity"`
+	CategoryID entities.UniqueEntityID `json:"category_id"`
+	GiftID     entities.UniqueEntityID `json:"gift_id"`
+	PersonName string                  `json:"person_name"`
+	Quantity   int64                   `json:"quantity"`
 }
 
 type MarkGiftOutputDTO struct{}

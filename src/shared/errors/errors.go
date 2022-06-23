@@ -7,11 +7,11 @@ const (
 	FIELD_MUST_BE_GREATER_THAN_ZERO = "the [field] field must be greater than zero"
 	GIFT_NOT_FOUND                  = "gift not found"
 	GIFT_NOT_AVAILABLE              = "gift not available"
+	GIFT_NOT_BELONG_CATEGORY        = "gift does not belong to this category"
 	GIFT_QUANTITY_NOT_AVAILABLE     = "quantity greater than quantity available"
 	INCORRECT_PASSWORD              = "incorrect password"
 	INVALID_EMAIL                   = "invalid email"
 	INVALID_PASSWORD                = "invalid password"
 	NAME_IS_EMPTY                   = "name is empty"
-	USER_NOT_FOUND                  = "user not found"
 	UNAUTHORIZED                    = "unauthorized"
 )

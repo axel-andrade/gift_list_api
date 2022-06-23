@@ -36,6 +36,10 @@ func (bs *MarkGiftInteractor) Execute(input *MarkGiftInputDTO) error {
 		return errors.New(ERROR.GIFT_NOT_AVAILABLE)
 	}
 
+	if gift.CategoryID != input.CategoryID {
+		return errors.New(ERROR.GIFT_NOT_BELONG_CATEGORY)
+	}
+
 	var quantityThatWillRemain int64 = gift.Quantity - input.Quantity
 
 	if quantityThatWillRemain < 0 {

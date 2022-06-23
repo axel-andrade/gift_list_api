@@ -6,12 +6,12 @@ import (
 )
 
 type MarkedGiftRepositoryImpl struct {
-	CategoryRepositoryImpl
+	*BaseRepositoryImpl
 	MarkedGiftMapper mappers.MarkedGiftMapper
 }
 
-func BuildMarkedGiftRepositoryImpl() *MarkedGiftRepositoryImpl {
-	return &MarkedGiftRepositoryImpl{CategoryRepositoryImpl: *BuildCategoryRepositoryImpl()}
+func BuildMarkedGiftRepositoryImpl(baseRepositoryImpl *BaseRepositoryImpl) *MarkedGiftRepositoryImpl {
+	return &MarkedGiftRepositoryImpl{BaseRepositoryImpl: baseRepositoryImpl}
 }
 
 func (r *MarkedGiftRepositoryImpl) CreateMarkedGift(markedGift *entities.MarkedGift) (*entities.MarkedGift, error) {

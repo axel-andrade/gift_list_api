@@ -12,10 +12,15 @@ type MarkGiftGatewayFactory struct {
 }
 
 func BuildMarkGiftGatewayFactory() *MarkGiftGatewayFactory {
+	baseRepositoryImpl := repositories_impl.BuildBaseRepoImpl()
+	categoryRepositoryImpl := repositories_impl.BuildCategoryRepositoryImpl(baseRepositoryImpl)
+	giftRepositoryImpl := repositories_impl.BuildGiftRepositoryImpl(baseRepositoryImpl, categoryRepositoryImpl)
+	markedGiftRepositoryImpl := repositories_impl.BuildMarkedGiftRepositoryImpl(baseRepositoryImpl)
+
 	return &MarkGiftGatewayFactory{
-		BaseRepositoryImpl:       repositories_impl.BuildBaseRepoImpl(),
-		CategoryRepositoryImpl:   repositories_impl.BuildCategoryRepositoryImpl(),
-		GiftRepositoryImpl:       repositories_impl.BuildGiftRepositoryImpl(),
-		MarkedGiftRepositoryImpl: repositories_impl.BuildMarkedGiftRepositoryImpl(),
+		BaseRepositoryImpl:       baseRepositoryImpl,
+		CategoryRepositoryImpl:   categoryRepositoryImpl,
+		GiftRepositoryImpl:       giftRepositoryImpl,
+		MarkedGiftRepositoryImpl: markedGiftRepositoryImpl,
 	}
 }
