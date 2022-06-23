@@ -12,6 +12,7 @@ type GiftFormatted struct {
 	Available     bool                    `json:"available" bson:"available"`
 	ImageFilename string                  `json:"image_filename" bson:"image_filename"`
 	Quantity      int64                   `json:"quantity" bson:"quantity"`
+	PriceGrade    int64                   `json:"price_grade" bson:"price_grade"`
 	CreatedAt     time.Time               `json:"created_at" bson:"created_at"`
 	UpdatedAt     time.Time               `json:"updated_at" bson:"updated_at"`
 }
@@ -28,6 +29,7 @@ func (ptr *GiftPresenter) Format(gift entities.Gift) GiftFormatted {
 		Available:     gift.Available,
 		ImageFilename: gift.ImageFilename,
 		Quantity:      gift.Quantity,
+		PriceGrade:    gift.PriceGrade,
 		CreatedAt:     gift.CreatedAt,
 		UpdatedAt:     gift.UpdatedAt,
 	}

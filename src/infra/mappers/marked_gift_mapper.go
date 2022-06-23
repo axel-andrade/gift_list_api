@@ -15,13 +15,8 @@ func (m *MarkedGiftMapper) ToDomain(model models.MarkedGift) *entities.MarkedGif
 	entity := &entities.MarkedGift{
 		Base:       *m.BaseMapper.toDomain(model.Base),
 		PersonName: model.PersonName,
-		CategoryID: model.CategoryID,
 		GiftID:     model.GiftID,
 		Quantity:   model.Quantity,
-	}
-
-	if model.Category.ID != 0 {
-		entity.Category = *m.CategoryMapper.ToDomain(model.Category)
 	}
 
 	if model.Gift.ID != 0 {
@@ -35,7 +30,6 @@ func (m *MarkedGiftMapper) ToPersistence(entity entities.MarkedGift) *models.Mar
 	return &models.MarkedGift{
 		Base:       *m.BaseMapper.toPersistence(entity.Base),
 		PersonName: entity.PersonName,
-		CategoryID: entity.CategoryID,
 		GiftID:     entity.GiftID,
 		Quantity:   entity.Quantity,
 	}

@@ -4,6 +4,7 @@ import (
 	"go_gift_list_api/src/entities"
 	"go_gift_list_api/src/infra/database/models"
 	"go_gift_list_api/src/infra/mappers"
+	"strconv"
 )
 
 type GiftRepositoryImpl struct {
@@ -32,7 +33,7 @@ func (r *GiftRepositoryImpl) FindGiftsPaginate(categoryID entities.UniqueEntityI
 	var q string = "available = 1"
 
 	if categoryID > 0 {
-		q += " AND category_id = " + string(rune(categoryID))
+		q += " AND category_id = " + strconv.Itoa(int(categoryID))
 	}
 
 	if pagination.Search != "" {
@@ -43,7 +44,7 @@ func (r *GiftRepositoryImpl) FindGiftsPaginate(categoryID entities.UniqueEntityI
 
 	offset := pagination.GetOffset()
 	limit := pagination.Limit
-	sort := pagination.Sort
+	sort := "price_grade desc"
 
 	var gifts []entities.Gift
 

@@ -15,12 +15,6 @@ func BuildMarkGiftInteractor(g MarkGiftGateway) *MarkGiftInteractor {
 }
 
 func (bs *MarkGiftInteractor) Execute(input *MarkGiftInputDTO) error {
-	categoryExists := bs.Gateway.CheckExistsCategory(input.CategoryID)
-
-	if !categoryExists {
-		return errors.New(ERROR.CATEGORY_NOT_FOUND)
-	}
-
 	var gift *entities.Gift
 	var err error
 
@@ -36,11 +30,7 @@ func (bs *MarkGiftInteractor) Execute(input *MarkGiftInputDTO) error {
 		return errors.New(ERROR.GIFT_NOT_AVAILABLE)
 	}
 
-	if gift.CategoryID != input.CategoryID {
-		return errors.New(ERROR.GIFT_NOT_BELONG_CATEGORY)
-	}
-
-	var quantityThatWillRemain int64 = gift.Quantity - input.Quantity
+	var quantityThatWillRemain int64 = gift.Quantity - 1
 
 	if quantityThatWillRemain < 0 {
 		return errors.New(ERROR.GIFT_QUANTITY_NOT_AVAILABLE)
@@ -48,9 +38,7 @@ func (bs *MarkGiftInteractor) Execute(input *MarkGiftInputDTO) error {
 
 	markedGiftToCreate := entities.MarkedGift{
 		PersonName: input.PersonName,
-		CategoryID: input.CategoryID,
 		GiftID:     input.GiftID,
-		Quantity:   input.Quantity,
 	}
 
 	bs.Gateway.StartTransaction()
