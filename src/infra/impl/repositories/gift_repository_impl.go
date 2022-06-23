@@ -57,8 +57,10 @@ func (r *GiftRepositoryImpl) UpdateGift(gift *entities.Gift) (*entities.Gift, er
 
 	q := r.getQueryOrTx()
 
-	if err := q.Model(&models.Gift{}).Where("id = ?", gift.ID).Updates(&map[string]interface{}{"available": giftModel.Available, "quantity": giftModel.Quantity}).Error; err != nil {
-		return nil, err
+	result := q.Model(&models.Gift{}).Where("id = ?", gift.ID).Updates(&map[string]interface{}{"available": giftModel.Available, "quantity": giftModel.Quantity})
+
+	if result.Error != nil {
+		return nil, result.Error
 	}
 
 	return r.GiftMapper.ToDomain(*giftModel), nil
