@@ -8,4 +8,5 @@ type Gift struct {
 	Available     int64    `gorm:"type:tinyint(1);default:1" json:"available"`
 	ImageFilename string   `gorm:"type:varchar(255);not null" json:"image_filename"`
 	Quantity      int64    `gorm:"type:integer;default:1" json:"quantity"`
+	PriceGrade    int64    `gorm:"type:integer;default:1" json:"price_grade"`
 }

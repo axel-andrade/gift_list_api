@@ -16,6 +16,7 @@ func (g *GiftSeeder) createBathroomGifts(db *gorm.DB) {
 			Available:     1,
 			ImageFilename: "chuveiro",
 			Quantity:      1,
+			PriceGrade:    3,
 		},
 		{
 			Name:          "Jogo de tapetes",
@@ -23,6 +24,7 @@ func (g *GiftSeeder) createBathroomGifts(db *gorm.DB) {
 			Available:     1,
 			ImageFilename: "jogo_tapetes_banheiro",
 			Quantity:      1,
+			PriceGrade:    1,
 		},
 		{
 			Name:          "Kit de acessórios",
@@ -30,13 +32,15 @@ func (g *GiftSeeder) createBathroomGifts(db *gorm.DB) {
 			Available:     1,
 			ImageFilename: "kit_acessorios_banheiro",
 			Quantity:      1,
+			PriceGrade:    2,
 		},
 		{
-			Name:          "Kit de acessórios",
+			Name:          "Lixeira de banheiro",
 			CategoryID:    bathroomCategoryID,
 			Available:     1,
-			ImageFilename: "kit_acessorios_banheiro",
+			ImageFilename: "lixeira_de_banheiro",
 			Quantity:      1,
+			PriceGrade:    2,
 		},
 		{
 			Name:          "Toalhas de banho",
@@ -44,6 +48,7 @@ func (g *GiftSeeder) createBathroomGifts(db *gorm.DB) {
 			Available:     1,
 			ImageFilename: "toalhas_de_banho",
 			Quantity:      1,
+			PriceGrade:    1,
 		},
 		{
 			Name:          "Toalhas de rosto",
@@ -51,6 +56,7 @@ func (g *GiftSeeder) createBathroomGifts(db *gorm.DB) {
 			Available:     1,
 			ImageFilename: "toalhas_de_rosto",
 			Quantity:      1,
+			PriceGrade:    1,
 		},
 	}
 

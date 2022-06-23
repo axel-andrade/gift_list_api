@@ -26,6 +26,7 @@ func (m *GiftMapper) ToDomain(model models.Gift) *entities.Gift {
 		Available:     availableToDomain,
 		ImageFilename: model.ImageFilename,
 		Quantity:      model.Quantity,
+		PriceGrade:    model.PriceGrade,
 	}
 
 	if model.Category.ID != 0 {
@@ -52,5 +53,6 @@ func (m *GiftMapper) ToPersistence(entity entities.Gift) *models.Gift {
 		Available:     availableToPersistent,
 		ImageFilename: entity.ImageFilename,
 		Quantity:      entity.Quantity,
+		PriceGrade:    entity.PriceGrade,
 	}
 }

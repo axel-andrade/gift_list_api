@@ -8,4 +8,5 @@ type Gift struct {
 	Available     bool     `json:"available"`
 	ImageFilename string   `json:"image_filename"`
 	Quantity      int64    `json:"quantity"`
+	PriceGrade    int64    `json:"price_grade"`
 }
