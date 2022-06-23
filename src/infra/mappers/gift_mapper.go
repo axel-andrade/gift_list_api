@@ -20,13 +20,13 @@ func (m *GiftMapper) ToDomain(model models.Gift) *entities.Gift {
 	}
 
 	entity := &entities.Gift{
-		Base:          *m.BaseMapper.toDomain(model.Base),
-		Name:          model.Name,
-		CategoryID:    model.CategoryID,
-		Available:     availableToDomain,
-		ImageFilename: model.ImageFilename,
-		Quantity:      model.Quantity,
-		PriceGrade:    model.PriceGrade,
+		Base:       *m.BaseMapper.toDomain(model.Base),
+		Name:       model.Name,
+		CategoryID: model.CategoryID,
+		Available:  availableToDomain,
+		Image:      model.Image,
+		Quantity:   model.Quantity,
+		PriceGrade: model.PriceGrade,
 	}
 
 	if model.Category.ID != 0 {
@@ -47,12 +47,12 @@ func (m *GiftMapper) ToPersistence(entity entities.Gift) *models.Gift {
 	}
 
 	return &models.Gift{
-		Base:          *m.BaseMapper.toPersistence(entity.Base),
-		Name:          entity.Name,
-		CategoryID:    entity.CategoryID,
-		Available:     availableToPersistent,
-		ImageFilename: entity.ImageFilename,
-		Quantity:      entity.Quantity,
-		PriceGrade:    entity.PriceGrade,
+		Base:       *m.BaseMapper.toPersistence(entity.Base),
+		Name:       entity.Name,
+		CategoryID: entity.CategoryID,
+		Available:  availableToPersistent,
+		Image:      entity.Image,
+		Quantity:   entity.Quantity,
+		PriceGrade: entity.PriceGrade,
 	}
 }
