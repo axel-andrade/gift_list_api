@@ -1,11 +1,11 @@
 package server
 
 import (
+	cors_mdw "go_gift_list_api/src/infra/http/middlewares/cors"
 	"go_gift_list_api/src/infra/http/routes"
 	"log"
 	"os"
 
-	"github.com/gin-contrib/cors"
 	"github.com/gin-gonic/gin"
 )
 
@@ -15,12 +15,8 @@ type Server struct {
 }
 
 func NewServer() Server {
-	s := gin.Default()
-	s.Use(cors.New(cors.Config{
-		AllowOrigins: []string{"*"},
-		AllowMethods: []string{"POST", "PUT", "PATCH", "DELETE", "GET"},
-		AllowHeaders: []string{"Content-Type,access-control-allow-origin, access-control-allow-headers"},
-	}))
+	s := gin.New()
+	s.Use(cors_mdw.CORSMiddleware())
 
 	return Server{
 		port:   os.Getenv("PORT"),
