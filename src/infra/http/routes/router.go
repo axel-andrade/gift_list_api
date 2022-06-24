@@ -17,6 +17,7 @@ func ConfigRoutes(router *gin.Engine) *gin.Engine {
 		main.GET("/healthcheck", func(c *gin.Context) {
 			c.JSON(200, gin.H{"status": "OK"})
 		})
+		main.GET("/", common_validators.PaginationValidator(), gifts_validators.FindGiftsValidator(), composes.FindGiftsCompose)
 	}
 
 	v1 := router.Group("api/v1")
@@ -33,8 +34,6 @@ func ConfigRoutes(router *gin.Engine) *gin.Engine {
 			gifts.POST("/mark", composes.MarkGiftCompose)
 		}
 	}
-
-	v1.Use(cors.Default())
 
 	return router
 }
