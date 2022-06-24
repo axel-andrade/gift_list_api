@@ -18,7 +18,7 @@ func ConfigRoutes(router *gin.Engine) *gin.Engine {
 			c.JSON(200, gin.H{"status": "OK"})
 		})
 
-		main.GET("/gifts", common_validators.PaginationValidator(), gifts_validators.FindGiftsValidator(), composes.FindGiftsCompose)
+		main.GET("api/v1/gifts", common_validators.PaginationValidator(), gifts_validators.FindGiftsValidator(), composes.FindGiftsCompose)
 	}
 
 	v1 := router.Group("/api/v1")
