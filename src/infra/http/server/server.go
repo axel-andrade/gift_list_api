@@ -16,15 +16,13 @@ type Server struct {
 
 func NewServer() Server {
 	r := gin.Default()
-	r.Use(cors.New(cors.Config{
-		AllowMethods:     []string{"GET", "POST", "OPTIONS", "PUT"},
-		AllowHeaders:     []string{"Origin", "Content-Length", "Content-Type", "User-Agent", "Referrer", "Host", "Token"},
-		ExposeHeaders:    []string{"Content-Length"},
-		AllowCredentials: true,
-		AllowAllOrigins:  false,
-		AllowOriginFunc:  func(origin string) bool { return true },
-		MaxAge:           86400,
-	}))
+	corsConfig := cors.DefaultConfig()
+	corsConfig.AllowOrigins = []string{"http://localhost:3000"}
+	corsConfig.AllowCredentials = true
+	corsConfig.AddAllowHeaders("Access-Control-Allow-Headers", "access-control-allow-origin, access-control-allow-headers", "Content-Type", "X-XSRF-TOKEN", "Accept", "Origin", "X-Requested-With", "Authorization")
+	corsConfig.AddAllowMethods("GET", "POST", "PUT", "DELETE")
+
+	r.Use(cors.New(corsConfig))
 
 	return Server{
 		port:   os.Getenv("PORT"),
