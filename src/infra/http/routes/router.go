@@ -33,6 +33,7 @@ func ConfigRoutes(router *gin.Engine) *gin.Engine {
 			gifts.GET("/", common_validators.PaginationValidator(), gifts_validators.FindGiftsValidator(), composes.FindGiftsCompose)
 			gifts.POST("/mark", composes.MarkGiftCompose)
 		}
+		gifts.Use(cors.Default())
 	}
 
 	return router
