@@ -20,7 +20,7 @@ func ConfigRoutes(router *gin.Engine) *gin.Engine {
 		main.GET("/gifts", common_validators.PaginationValidator(), gifts_validators.FindGiftsValidator(), composes.FindGiftsCompose)
 	}
 
-	v1 := router.Group("api/v1")
+	v1 := main.Group("api/v1")
 	{
 
 		categories := v1.Group("categories")
@@ -33,7 +33,6 @@ func ConfigRoutes(router *gin.Engine) *gin.Engine {
 			gifts.GET("/", common_validators.PaginationValidator(), gifts_validators.FindGiftsValidator(), composes.FindGiftsCompose)
 			gifts.POST("/mark", composes.MarkGiftCompose)
 		}
-		gifts.Use(cors.Default())
 	}
 
 	return router
