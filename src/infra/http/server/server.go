@@ -5,6 +5,7 @@ import (
 	"log"
 	"os"
 
+	"github.com/gin-contrib/cors"
 	"github.com/gin-gonic/gin"
 )
 
@@ -15,6 +16,7 @@ type Server struct {
 
 func NewServer() Server {
 	r := gin.Default()
+	r.Use(cors.Default())
 
 	return Server{
 		port:   os.Getenv("PORT"),

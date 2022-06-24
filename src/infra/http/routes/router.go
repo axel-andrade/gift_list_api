@@ -5,20 +5,20 @@ import (
 	common_validators "go_gift_list_api/src/infra/http/middlewares/validators/common"
 	gifts_validators "go_gift_list_api/src/infra/http/middlewares/validators/gifts"
 
-	"github.com/gin-contrib/cors"
 	"github.com/gin-gonic/gin"
 )
 
 func ConfigRoutes(router *gin.Engine) *gin.Engine {
-	router.Use(cors.Default())
-
 	main := router.Group("/")
 	{
-		main.GET("/healthcheck", func(c *gin.Context) {
+		main.GET("healthcheck", func(c *gin.Context) {
 			c.JSON(200, gin.H{"status": "OK"})
 		})
 
-		main.GET("api/v1/gifts", common_validators.PaginationValidator(), gifts_validators.FindGiftsValidator(), composes.FindGiftsCompose)
+		main.GET("categories", common_validators.PaginationValidator(), composes.FindCategoriesCompose)
+
+		main.GET("gifts", common_validators.PaginationValidator(), gifts_validators.FindGiftsValidator(), composes.FindGiftsCompose)
+		main.POST("gifts/mark", composes.MarkGiftCompose)
 	}
 
 	v1 := router.Group("/api/v1")
