@@ -34,5 +34,7 @@ func ConfigRoutes(router *gin.Engine) *gin.Engine {
 		}
 	}
 
+	v1.Use(cors.Default())
+
 	return router
 }
