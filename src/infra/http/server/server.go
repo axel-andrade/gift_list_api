@@ -15,12 +15,16 @@ type Server struct {
 }
 
 func NewServer() Server {
-	s := gin.New()
-	s.Use(cors.Default())
+	r := gin.Default()
+	r.Use(cors.New(cors.Config{
+		AllowOrigins: []string{"*"},
+		AllowMethods: []string{"POST", "PUT", "GET", "PATCH", "DELETE"},
+		AllowHeaders: []string{"Content-Type,access-control-allow-origin, access-control-allow-headers"},
+	}))
 
 	return Server{
 		port:   os.Getenv("PORT"),
-		server: s,
+		server: r,
 	}
 }
 
