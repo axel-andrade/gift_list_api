@@ -107,14 +107,6 @@ func (g *GiftSeeder) createLaundryGifts(db *gorm.DB) {
 			PriceGrade: 1,
 		},
 		{
-			Name:       "Cabides de roupa",
-			CategoryID: laundryCategoryID,
-			Available:  1,
-			Image:      "prendedores_de_roupa",
-			Quantity:   2,
-			PriceGrade: 1,
-		},
-		{
 			Name:       "Panos de chão",
 			CategoryID: laundryCategoryID,
 			Available:  1,
