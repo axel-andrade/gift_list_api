@@ -6,15 +6,14 @@ import (
 	"os"
 	"time"
 
-	"gorm.io/driver/mysql"
+	"gorm.io/driver/sqlite"
 	"gorm.io/gorm"
 )
 
 var db *gorm.DB
 
 func ConnectDB() {
-	dsn := os.Getenv("DSN")
-	database, err := gorm.Open(mysql.Open(dsn), &gorm.Config{})
+	database, err := gorm.Open(sqlite.Open("gifts.db"), &gorm.Config{})
 	if err != nil {
 		log.Fatal(err)
 	}
