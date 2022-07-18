@@ -13,7 +13,7 @@ func (g *GiftSeeder) createLaundryGifts(db *gorm.DB) {
 		{
 			Name:       "Lava e seca",
 			CategoryID: laundryCategoryID,
-			Available:  1,
+			Available:  0,
 			Image:      "lava_e_seca",
 			Quantity:   1,
 			PriceGrade: 3,
@@ -45,7 +45,7 @@ func (g *GiftSeeder) createLaundryGifts(db *gorm.DB) {
 		{
 			Name:       "Vassoura",
 			CategoryID: laundryCategoryID,
-			Available:  1,
+			Available:  0,
 			Image:      "vassoura",
 			Quantity:   2,
 			PriceGrade: 1,
@@ -53,7 +53,7 @@ func (g *GiftSeeder) createLaundryGifts(db *gorm.DB) {
 		{
 			Name:       "Rodo",
 			CategoryID: laundryCategoryID,
-			Available:  1,
+			Available:  0,
 			Image:      "rodo",
 			Quantity:   2,
 			PriceGrade: 1,
@@ -61,7 +61,7 @@ func (g *GiftSeeder) createLaundryGifts(db *gorm.DB) {
 		{
 			Name:       "Balde",
 			CategoryID: laundryCategoryID,
-			Available:  1,
+			Available:  0,
 			Image:      "balde",
 			Quantity:   2,
 			PriceGrade: 1,
@@ -69,7 +69,7 @@ func (g *GiftSeeder) createLaundryGifts(db *gorm.DB) {
 		{
 			Name:       "Pá",
 			CategoryID: laundryCategoryID,
-			Available:  1,
+			Available:  0,
 			Image:      "pa",
 			Quantity:   1,
 			PriceGrade: 1,
@@ -101,7 +101,7 @@ func (g *GiftSeeder) createLaundryGifts(db *gorm.DB) {
 		{
 			Name:       "Prendedores de roupa",
 			CategoryID: laundryCategoryID,
-			Available:  1,
+			Available:  0,
 			Image:      "prendedores_de_roupa",
 			Quantity:   1,
 			PriceGrade: 1,
@@ -109,7 +109,7 @@ func (g *GiftSeeder) createLaundryGifts(db *gorm.DB) {
 		{
 			Name:       "Panos de chão",
 			CategoryID: laundryCategoryID,
-			Available:  1,
+			Available:  0,
 			Image:      "panos_de_chao",
 			Quantity:   2,
 			PriceGrade: 1,
@@ -117,7 +117,7 @@ func (g *GiftSeeder) createLaundryGifts(db *gorm.DB) {
 		{
 			Name:       "Flanelas",
 			CategoryID: laundryCategoryID,
-			Available:  1,
+			Available:  0,
 			Image:      "flanelas",
 			Quantity:   2,
 			PriceGrade: 1,
@@ -125,7 +125,7 @@ func (g *GiftSeeder) createLaundryGifts(db *gorm.DB) {
 		{
 			Name:       "Espanador de pó",
 			CategoryID: laundryCategoryID,
-			Available:  1,
+			Available:  0,
 			Image:      "espanador_de_po",
 			Quantity:   2,
 			PriceGrade: 1,
