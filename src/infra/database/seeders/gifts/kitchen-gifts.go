@@ -53,7 +53,7 @@ func (g *GiftSeeder) createKitchenGifts(db *gorm.DB) {
 		{
 			Name:       "Depurador",
 			CategoryID: kitchenCategoryID,
-			Available:  2,
+			Available:  0,
 			Image:      "depurador",
 			Quantity:   1,
 			PriceGrade: 3,
@@ -205,7 +205,7 @@ func (g *GiftSeeder) createKitchenGifts(db *gorm.DB) {
 		{
 			Name:       "Rodinho de pia",
 			CategoryID: kitchenCategoryID,
-			Available:  2,
+			Available:  0,
 			Image:      "rodinho_pia",
 			Quantity:   1,
 			PriceGrade: 1,
