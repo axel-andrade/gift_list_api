@@ -115,7 +115,7 @@ func (g *GiftSeeder) createKitchenGifts(db *gorm.DB) {
 			PriceGrade: 2,
 		},
 		{
-			Name:       "Conjunto de talheres e faqueiro",
+			Name:       "Jogo de faqueiro",
 			CategoryID: kitchenCategoryID,
 			Available:  1,
 			Image:      "conjunto_talheres_faqueiro",
@@ -187,7 +187,7 @@ func (g *GiftSeeder) createKitchenGifts(db *gorm.DB) {
 			PriceGrade: 2,
 		},
 		{
-			Name:       "Portal papel toalha",
+			Name:       "Porta papel toalha",
 			CategoryID: kitchenCategoryID,
 			Available:  1,
 			Image:      "porta_papel_toalha",
