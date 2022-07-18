@@ -42,7 +42,7 @@ func (g *GiftSeeder) createNewGifts(db *gorm.DB) {
 			Name:       "Planta decorativa",
 			CategoryID: outherCategoryID,
 			Available:  1,
-			Image:      "planta decorativa",
+			Image:      "planta_decorativa",
 			Quantity:   4,
 			PriceGrade: 1,
 		},

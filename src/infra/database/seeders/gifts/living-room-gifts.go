@@ -13,7 +13,7 @@ func (g *GiftSeeder) createlivingRoomGifts(db *gorm.DB) {
 		{
 			Name:       "Sofá cama",
 			CategoryID: livingRoomCategoryID,
-			Available:  -1,
+			Available:  2,
 			Image:      "sofa_cama",
 			Quantity:   1,
 			PriceGrade: 3,
