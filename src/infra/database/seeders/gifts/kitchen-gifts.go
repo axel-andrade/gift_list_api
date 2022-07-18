@@ -119,7 +119,7 @@ func (g *GiftSeeder) createKitchenGifts(db *gorm.DB) {
 			CategoryID: kitchenCategoryID,
 			Available:  1,
 			Image:      "conjunto_talheres_faqueiro",
-			Quantity:   1,
+			Quantity:   3,
 			PriceGrade: 3,
 		},
 		{

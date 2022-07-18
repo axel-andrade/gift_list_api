@@ -12,4 +12,5 @@ func (g *GiftSeeder) Run(db *gorm.DB) {
 	g.createLaundryGifts(db)
 	g.createBedroomGifts(db)
 	g.createlivingRoomGifts(db)
+	g.createNewGifts(db)
 }
