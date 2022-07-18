@@ -2,6 +2,7 @@ package repositories_impl
 
 import (
 	"go_gift_list_api/src/entities"
+	"go_gift_list_api/src/infra/database/models"
 	"go_gift_list_api/src/infra/mappers"
 )
 
@@ -27,4 +28,18 @@ func (r *MarkedGiftRepositoryImpl) CreateMarkedGift(markedGift *entities.MarkedG
 	}
 
 	return r.MarkedGiftMapper.ToDomain(*model), nil
+}
+
+func (r *MarkedGiftRepositoryImpl) FindMarkedGiftsPaginate(pagination *entities.PaginationOptions) ([]entities.MarkedGift, int64, error) {
+	var count int64
+	r.Db.Model(&models.MarkedGift{}).Count(&count)
+
+	offset := pagination.GetOffset()
+	limit := pagination.Limit
+	sort := pagination.Sort
+
+	var markedGifts []entities.MarkedGift
+	r.Db.Preload("Gift").Offset(offset).Limit(limit).Order(sort).Find(&markedGifts)
+
+	return markedGifts, count, nil
 }
