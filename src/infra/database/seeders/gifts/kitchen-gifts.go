@@ -8,7 +8,7 @@ import (
 )
 
 func (g *GiftSeeder) createKitchenGifts(db *gorm.DB) {
-	var kitchenCategoryID int64 = 2
+	var kitchenCategoryID int64 = 1
 	var kitchenGifts = []models.Gift{
 		{
 			Name:       "Panela de pressão",

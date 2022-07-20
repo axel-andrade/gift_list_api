@@ -8,7 +8,7 @@ import (
 )
 
 func (g *GiftSeeder) createBathroomGifts(db *gorm.DB) {
-	var bathroomCategoryID int64 = 1
+	var bathroomCategoryID int64 = 3
 	var bathroomGifts = []models.Gift{
 		{
 			Name:       "Chuveiro Elétrico",

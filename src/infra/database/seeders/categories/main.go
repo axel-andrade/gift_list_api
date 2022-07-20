@@ -12,13 +12,13 @@ type CategorySeeder struct{}
 func (c *CategorySeeder) Run(db *gorm.DB) {
 	var categories = []models.Category{
 		{
-			Name: "Banheiro",
-		},
-		{
 			Name: "Cozinha",
 		},
 		{
 			Name: "Lavanderia",
+		},
+		{
+			Name: "Banheiro",
 		},
 		{
 			Name: "Quarto",
