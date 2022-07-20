@@ -13,7 +13,7 @@ func (g *GiftSeeder) createLaundryGifts(db *gorm.DB) {
 		{
 			Name:       "Lava e seca",
 			CategoryID: laundryCategoryID,
-			Available:  0,
+			Available:  1,
 			Image:      "lava_e_seca",
 			Quantity:   1,
 			PriceGrade: 3,
