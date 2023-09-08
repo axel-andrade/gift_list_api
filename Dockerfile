@@ -1,5 +1,5 @@
 # Use uma imagem mínima do Go como imagem base, como a imagem Alpine
-FROM golang:1.16-alpine
+FROM golang:1.20-alpine
 
 # Defina variáveis de ambiente para otimizar a compilação
 ENV GO111MODULE=on \
