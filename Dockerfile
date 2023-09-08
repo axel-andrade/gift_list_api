@@ -10,6 +10,9 @@ ENV GO111MODULE=on \
 # Crie um diretório de trabalho dentro do contêiner
 WORKDIR /app
 
+# Instale o GCC e outras ferramentas de compilação
+RUN apk --no-cache add build-base
+
 # Copie apenas o arquivo go.mod e go.sum para permitir o cache das dependências
 COPY go.mod go.sum ./
 
@@ -24,8 +27,6 @@ RUN go build -o app
 
 # Remova qualquer dependência desnecessária que possa ter sido instalada durante a compilação
 RUN apk --no-cache add ca-certificates
-
-# Comando para executar a aplicação, considerando que ela lê a porta do .env
 
 # Exponha a porta em que a aplicação irá rodar
 EXPOSE 8080
