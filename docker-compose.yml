@@ -3,19 +3,22 @@ version: '3'
 networks:
     shared-services:
         external: true
-        
+
 services:
-  go_clean_api:
-    build: .
-    restart: on-failure
+  go_mongo_api:
+    build:
+      context: .
+      dockerfile: Dockerfile.dev
+    image: go_mongo_api:latest
+    restart: always
+    env_file:
+      - .env
     environment:
-     - DSN=root:root@tcp(mysql8:3306)/go_clean_basic_api?charset=utf8mb4&parseTime=true
-     - REDIS_DSN=redis:6379
-     - DB_AUTO_MIGRATE=true
-     - ACCESS_SECRET=ACCESS_SECRET
-     - REFRESH_SECRET=REFRESH_SECRET
-     - MINUTES_TO_EXPIRATION_TOKEN=15
+      - WATCH_FILES=${WATCH_FILES}
+      - DEBUG=${DEBUG}
     ports:
-      - 5000:5000
+      - 8080:8080
+    volumes:
+      - .:/go/src/app  # Mapear para o diretório correto dentro do contêiner
     networks:
       - shared-services
