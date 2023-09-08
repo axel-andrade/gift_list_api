@@ -20,7 +20,7 @@ RUN go mod tidy
 COPY . .
 
 # Compile a aplicação Go
-RUN go build -o myapp
+RUN go build -o app
 
 # Remova qualquer dependência desnecessária que possa ter sido instalada durante a compilação
 RUN apk --no-cache add ca-certificates
