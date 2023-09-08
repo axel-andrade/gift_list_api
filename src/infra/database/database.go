@@ -6,7 +6,7 @@ import (
 	"os"
 	"time"
 
-	"gorm.io/driver/mysql"
+	"gorm.io/driver/sqlite"
 	"gorm.io/gorm"
 )
 
@@ -14,7 +14,8 @@ var db *gorm.DB
 
 func ConnectDB() {
 	dsn := os.Getenv("DSN")
-	database, err := gorm.Open(mysql.Open(dsn), &gorm.Config{})
+	database, err := gorm.Open(sqlite.Open(dsn), &gorm.Config{})
+
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -23,8 +24,8 @@ func ConnectDB() {
 
 	config, _ := db.DB()
 
-	config.SetMaxIdleConns(10)
-	config.SetMaxOpenConns(100)
+	config.SetMaxIdleConns(1)
+	config.SetMaxOpenConns(1)
 	config.SetConnMaxLifetime(time.Hour)
 
 	if os.Getenv("DB_AUTO_MIGRATE") == "true" {

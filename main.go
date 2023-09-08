@@ -9,10 +9,12 @@ import (
 	"github.com/joho/godotenv"
 )
 
-/**
+/*
+*
 A função init por padrão é a primeira a ser executada pelo go.
 Utilizada para configurar ou fazer um pré carregamento.
-**/
+*
+*/
 func init() {
 
 	if os.Getenv("ENV") != "production" {
