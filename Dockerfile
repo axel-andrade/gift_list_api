@@ -3,7 +3,7 @@ FROM golang:1.20-alpine
 
 # Defina variáveis de ambiente para otimizar a compilação
 ENV GO111MODULE=on \
-    CGO_ENABLED=0 \
+    CGO_ENABLED=1 \
     GOOS=linux \
     GOARCH=amd64
 
